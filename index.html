@@ -7,11 +7,6 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-  <link href="css/style.css" rel="stylesheet" />
-  <link href="css/buddycloud.css" rel="stylesheet" />
-  <link href="css/paperfold.css" rel="stylesheet" />
-  <script type="text/javascript" src="js/modernizr.custom.71147.js"></script>
-  <script type="text/javascript" src="js/prefixfree.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -34,7 +29,31 @@
       </header>
       <section>
         <h3>Overview.</h3>
-      <div class="playground">
+	  <div id="controls">
+	    <h1>Paperfold CSS</h1>
+	    <button id="go" class="highlighted">Open</button>
+	    <h2>Settings</h2>
+	    <div>
+	      <label for="time" class="hasOutput">Time <span id="showTime">0</span></label>
+	      <input id="time" type="range" min="0" max="100" step="1" value="0" />
+	    </div>
+	    <div>
+	      <label for="foldHeight" class="hasOutput">Height Limit<span id="showFoldHeight">200</span></label>
+	      <input id="foldHeight" type="range" min="20" max="400" step="1" value="200" />
+	    </div>
+	    <div>
+	      <label for="perspective" class="hasOutput">3D Perspective<span id="showPerspective">1000</span></label>
+	      <input id="perspective" type="range" min="500" max="4000" step="1" value="1000" />
+	    </div>
+	    <div>
+	      <label for="showHelpers">Show Helpers</label>
+	      <input type="checkbox" id="showHelpers" />
+	    </div>
+	    <div>
+	      <p>Hint: drag to see the effect in 3D space</p>
+	    </div>
+	  </div>
+	  <div class="playground">
 	    <div class="box buddycloud">
 	      <h1>Buddycloud</h1>
 	      <div class="stream">
@@ -422,10 +441,6 @@ PosList GestureAlgorithm::detectDirection(const PosList &positions)
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-
-    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="js/html5slider.js"></script>
-	<script type="text/javascript" src="js/paperfold.js"></script>
-	<script type="text/javascript" src="js/ui.js"></script>
+    
   </body>
 </html>
