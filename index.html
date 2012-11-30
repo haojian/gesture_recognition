@@ -7,6 +7,11 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/buddycloud.css" rel="stylesheet" />
+  <link href="css/paperfold.css" rel="stylesheet" />
+  <script type="text/javascript" src="js/modernizr.custom.71147.js"></script>
+  <script type="text/javascript" src="js/prefixfree.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -29,48 +34,326 @@
       </header>
       <section>
         <h3>Overview.</h3>
+        <div class="hidden">
+          <section class="comment">
+            <div class="avatar user6"></div>
+            <div class="postmeta">
+              <span class="time">3 days</span>
+            </div>
+            <span class="name">Mona</span><span class="location">from Cafe Extra</span>
+            <p>Who knows? Maybe one day they will be. I like seafood.</p>
+          </section>
+          <section class="comment">
+            <div class="avatar user7"></div>
+            <div class="postmeta">
+              <span class="time">3 days</span>
+            </div>
+            <span class="name">Verena</span><span class="location">from Home</span>
+            <p>Finding a needle in a haystack isn't hard when every straw is computerized. I'm really more an apartment person.</p>
+          </section>
+          <section class="comment">
+            <div class="avatar user12"></div>
+            <div class="postmeta">
+              <span class="time">3 days</span>
+            </div>
+            <span class="name">Sebastian</span><span class="location">from Passau</span>
+            <p>I feel like a jigsaw puzzle missing a piece. And I'm not even sure what the picture should be.</p>
+          </section>
+          <section class="comment">
+            <div class="avatar user3"></div>
+            <div class="postmeta">
+              <span class="time">3 days</span>
+            </div>
+            <span class="name">Tom</span><span class="location">from Island</span>
+            <p>Who knows? Maybe one day they will be. I like seafood.</p>
+          </section>
+          <section class="comment">
+            <div class="avatar user2"></div>
+            <div class="postmeta">
+              <span class="time">3 days</span>
+            </div>
+            <span class="name">Vera</span><span class="location">from Munich</span>
+            <p>Finding a needle in a haystack isn't hard when every straw is computerized. I'm really more an apartment person.</p>
+          </section>
+        </div><!-- /hidden -->
+        <section class="seeMore">
+          <span>See <span>5</span> More Posts</span>
+        </section>
+		<p>This gesture recognition/prediction was originally designed for the complex environment in in-car multimodal system. The motivation is to decrease the complexity of gesture operation on touch screen when the car is in motion.</p>
 
-<p>This gesture recognition/prediction was originally designed for the complex environment in in-car multimodal system. The motivation is to decrease the complexity of gesture operation on touch screen when the car is in motion.</p>
+		<p>Here is the preview screenshot:
+		<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/Mockup_overview.png" alt="overview"></p>
+		<p><b>Users can gesture to where they want to go by either tracing a particular street or drawing a circle around the area they are looking for.</b>
+		</p>
 
-<p>Here is the preview screenshot:
-<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/Mockup_overview.png" alt="overview"></p>
-<p><b>Users can gesture to where they want to go by either tracing a particular street or drawing a circle around the area they are looking for.</b>
-</p>
+		<p>Different with most past work in Gesture Recognition, this toolkit focuses in predicting the user’s intention before they had finished their gesture.</p>
+		<p>Similar with $1 gesture recognition, this gesture recognition also features in there is no requirement for library, toolkit, and training.</p>
 
-<p>Different with most past work in Gesture Recognition, this toolkit focuses in predicting the user’s intention before they had finished their gesture.</p>
-<p>Similar with $1 gesture recognition, this gesture recognition also features in there is no requirement for library, toolkit, and training.</p>
+		<h3>Screen shots of stand alone demo</h3>
 
-<h3>Screen shots of stand alone demo</h3>
-
-<p>"POLY-LINE" & "STRAIGHT LINE":
-<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/polylineline.gif" alt="polyline"></p>
-<p>
-<p>"ERAZE" & "POLY-LINE":
-<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/Eraze-PolyLine.gif" alt="ERAZE"></p>
-<p>
-<p>"CIRCLE":
-<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/circle.gif" alt="CIRCLE"></p>
-<p>
+		<p>"POLY-LINE" & "STRAIGHT LINE":
+		<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/polylineline.gif" alt="polyline"></p>
+		<p>
+		<p>"ERAZE" & "POLY-LINE":
+		<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/Eraze-PolyLine.gif" alt="ERAZE"></p>
+		<p>
+		<p>"CIRCLE":
+		<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/circle.gif" alt="CIRCLE"></p>
+		<p>
 	
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+		<h3>Algorithm Details</h3>
+		<h4>Direction Analysis
+		</h4>
+		<p>
+			I borrowed the idea from Optical Character Recognition, which is focus on direction analysis. This tactic could be illustrated in following image:
+			<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/mg_algo01.png" alt="CIRCLE"></p>
+		</p>
+		<ul style="list-style-type:none;">
+			<li>1. Each letter is defined by a n ‘ 8-directions gesture sequence.</li>
+			<li>2. The mouse moves are saved with the same 8-directions sensibility.</li>
+			<li>3. A Levenshtein distance is calculated from each letter to the user moves.</li>
+			<li>4. The algorithm return the best candidate (lowest levenshtein cost)</li>
+		</ul>
+		
+		<h4>Recognition Process.</h4>
+		<h5>Removing Noise.</h5>
+		<p>
+			<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/A.png" alt="a"></p>
+		<p>
+			This step is to remove the noise in recording and normalize the tracking resolution. This step also can make the recognition algorithm work more efficiently.
+		</p>
+		
+		<pre><code>
+void GestureAlgorithm::addPoint(int x, int y)
+{
+int d_x, d_y;
 
+d_x = x-positions.back().x;
+d_y = y-positions.back().y;
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+if( d_x*d_x + d_y*d_y >= MIN_MOVEMENT)
+{
+updateStatistic(x, y);
+recognizeGesture();
+}
+}
 
-<h3>Rather Drive Stick?</h3>
+void GestureAlgorithm::updateStatistic(int x, int y)
+{
+positions.push_back(Point(x, y));
+point_num = positions.size();
+if(point_num >1)
+{
+// For Point Recognization
+dist_sum += positions.begin()->dist(x,y);
+dist_average =dist_sum/(point_num - 1);
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+// For Line Recognization
+// Need a patch for the V0 calculation.
+Point v0 = Point(positions[1].x - positions[0].x, positions[0].y );
+Point v1 = Point(x - positions[0].x, y -positions[0].y);
+if(normalize(v0) && normalize( v1))
+{
+float theta = acos(dot(v0, v1));
+theta_sum += theta;
+theta_sqsum += sq(theta);
+theta_average = theta_sum / (float)(point_num - 1);
+theta_factor = sqrt((float)(point_num - 1)*theta_sqsum - sq(theta_sum))/(point_num-1);
+}
+}
+mainDirections = detectDirection(positions);
 
-<h3>Authors and Contributors</h3>
+//Statistic Update
+pos_x_sum += x;
+pos_y_sum += y;
+pos_xx_sum += sq(x);
+pos_xy_sum += x * y;
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+midPoint = Point(pos_x_sum/point_num, pos_y_sum/point_num);
+curGestureRender->render_bbox->addPoint(x, y);
+}
+		</code></pre>
+		
+		<h5>Converting to Directions.</h5>
+		<p><img src="http://shift-3.com/blog/wp-content/uploads/2011/06/A.png" alt="CIRCLE"></p>
+		<p>
+			To simplify this problem, the point list is convert to a vector list (velocity). The current design simplify the vectors into 4 dimensions: up, down, left, right. But it could be easily expand to the 8 dimensions as the one stated in the OCT tactic.</p>
+		<pre><code>
+PosList GestureAlgorithm::limitDirections(const PosList &positions)
+{
+PosList res;
+int lastx, lasty;
+bool firstTime = true;
 
-<h3>Support or Contact</h3>
+for( PosList::const_iterator ii = positions.begin(); ii != positions.end(); ++ii )
+{
+if( firstTime )
+{
+lastx = ii->x;
+lasty = ii->y;
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+firstTime = false;
+}
+else
+{
+int dx, dy;
+
+dx = ii->x – lastx;
+dy = ii->y – lasty;
+
+if( dy > 0 )
+{
+if( dx > dy || -dx > dy )
+dy = 0;
+else
+dx = 0;
+}
+else
+{
+if( dx > -dy || -dx > -dy )
+dy = 0;
+else
+dx = 0;
+}
+res.push_back( Point( dx, dy ) );
+lastx = ii->x;
+lasty = ii->y;
+}
+}
+
+return res;
+}
+		</code></pre>
+		<h5>Simplifying.</h5>
+		<p><img src="http://shift-3.com/blog/wp-content/uploads/2011/06/C.png" alt="CIRCLE"/></p>
+		<p>
+			Simplifying is finding the consecutive movements in the same direction and joining them. This step would convert the vector list to a simple presentation (e.g., “right, up, right, up”). Then the list can easily matched to some predefined gestures. An example result of this step is as follows:
+			
+		</p>
+		<pre><code>
+	Position Num:  141
+	X=  113 Y= 0
+	X= 0 Y= -15
+	X=  0 Y= 179
+	X= 13 Y= 0
+	X=  -110 Y= 0
+	X= 0 Y= 6
+	X=  0 Y= -101
+	X= 3 Y= 0
+	Directions Number: 8
+	Directions Length:540
+	UP Number: 3 Down Number: 2 Left: 1 right 2
+	Position Num:  142
+			</code></pre>
+			
+		<pre><code>
+PosList GestureAlgorithm::simplify(const PosList &positions)
+{
+PosList res;
+int lastdx = 0, lastdy = 0;
+bool firstTime = true;
+int index=0;
+for( PosList::const_iterator ii = positions.begin(); ii != positions.end(); ++ii )
+{
+if( firstTime )
+{
+lastdx = ii->x;
+lastdy = ii->y;
+firstTime = false;
+}
+else
+{
+bool joined = false;
+if( (lastdx > 0 && ii->x > 0) || (lastdx < 0 && ii->x < 0) )
+{
+lastdx += ii->x;
+joined = true;
+}
+if( (lastdy > 0 && ii->y > 0) || (lastdy < 0 && ii->y < 0) )
+{
+lastdy += ii->y;
+joined = true;
+}
+if( !joined )
+{
+res.push_back( Point( lastdx, lastdy ) );
+lastdx = ii->x;
+lastdy = ii->y;
+}
+}
+}
+if( lastdx != 0 || lastdy != 0 )
+{
+res.push_back( Point( lastdx, lastdy ) );
+}
+return res;
+}
+		</code></pre>
+			
+		<h5>Ignore Short Segments and Matching.</h5>
+
+		<p><img src="http://shift-3.com/blog/wp-content/uploads/2011/06/D.png" alt="CIRCLE"></p>
+		<p>Based on the assumption that each gesture should have some noise segments, I set a empirical parameter 90% as the elite threshold. This algorithm would remove the shortest segment repeatedly until the ration reached the empirical parameter.</p>
+
+		<pre><code>
+PosList GestureAlgorithm::removeShortestNoise(const PosList &positions)
+{
+    PosList res;
+    int shortestSoFar;
+    PosList::const_iterator shortest;
+    bool firstTime = true;
+
+    for( PosList::const_iterator ii = positions.begin(); ii != positions.end(); ++ii )
+    {
+        if( firstTime )
+        {
+            shortestSoFar = ii->x*ii->x + ii->y*ii->y;
+            shortest = ii;
+
+            firstTime = false;
+        }
+        else
+        {
+            if( (ii->x*ii->x + ii->y*ii->y) < shortestSoFar )             {                 shortestSoFar = ii->x*ii->x + ii->y*ii->y;
+                shortest = ii;
+            }
+        }
+    }
+
+    for( PosList::const_iterator ii = positions.begin(); ii != positions.end(); ++ii )
+    {
+        if( ii != shortest)
+            res.push_back( *ii );
+    }
+
+    return res;
+}
+
+PosList GestureAlgorithm::detectDirection(const PosList &positions)
+{
+    PosList directions = simplify(limitDirections(positions));
+    double minLength = calcLength(directions) *minMatch;
+
+    while(directions.size() > 0 && calcLength(removeShortestNoise(directions)) > minLength)
+    {
+        directions = simplify(removeShortestNoise(directions));
+    }
+
+    upNum = 0; downNum = 0; leftNum = 0; rightNum =0;
+    for(int i = 0; i< directions.size(); i++)     {         if(directions[i].y >= 0 && directions[i].x ==0)
+            upNum++;
+        else if(directions[i].y < 0 && directions[i].x ==0)             downNum++;         else if(directions[i].x >= 0 && directions[i].y ==0 )
+            leftNum++;
+        else if(directions[i].x < 0 && directions[i].y ==0 )
+            rightNum++;
+    }
+    return directions;
+}
+		</code></pre>
+
+<h3>Demo application</h3>
+
+<p>The .exe executable program is available in the package, which could run in the windows environment directly.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/haojian">haojian</a></p>
@@ -78,6 +361,10 @@ $ git checkout gh-pages
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/html5slider.js"></script>
+	<script type="text/javascript" src="js/paperfold.js"></script>
+	<script type="text/javascript" src="js/ui.js"></script>
   </body>
 </html>

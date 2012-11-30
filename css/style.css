@@ -1,0 +1,163 @@
+html {
+    height: 100%;
+}
+body {
+    width: 100%;
+    height: 100%;
+    font: 12px/15px "Helvetica Neue", sans-serif;
+    background: #eee;
+    margin: 0;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    overflow: hidden;
+}
+
+h1 { 
+    margin: 13px 0 34px;
+    font-size: 34px;
+}
+
+h2 { margin: 34px 0 13px; }
+
+#controls {
+    left: 0;
+    top: 0;
+    width: 300px;
+    bottom: 0;
+    padding: 21px;
+    border-right: 1px solid rgba(0,0,0,.21);
+    box-shadow: 1px 0 white;
+    position: absolute;
+}
+    #controls div {
+        margin: 13px 0;
+        color: gray;
+        font-size: 13px;
+    }
+    p {
+        margin: 0 3px;
+        color: #aaa;
+    }
+    label {
+        padding: 5px 3px;
+        font-weight: normal;
+        text-shadow: 0 1px 1px white;
+        display: block;
+    }
+        label[for="showHelpers"] { display: inline-block; }
+        .hasOutput {
+            position: relative;
+        }
+            .hasOutput span {
+                margin-left: 8px;
+                font-size: 11px;
+                color: #aaa;
+            }
+    input[type=range] {
+        height: 40px;
+        width: 300px;
+        padding: 3px;
+        appearance: none;
+        vertical-align: bottom;
+        background: linear-gradient(#ddd, #eee);
+        border-radius: 5px;
+        border: 1px solid rgba(0,0,0,.21);
+        border-top-color: rgba(0,0,0,.34);
+        box-shadow: 0 1px white, 0 1px 2px rgba(0,0,0,.13) inset;
+        box-sizing: border-box;
+    }
+    label {
+        position: relative;
+    }
+    #time123 {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+        position: relative;
+        background: url(../img/time.png);
+    }
+        #time123:before {
+            top: 0;
+            content: "";
+            width: 300px;
+            height: 26px;
+            border-top: 13px solid #eee;
+            border-bottom: 13px solid #eee;
+            border-right: 300px solid rgba(0,0,0,.13);
+            border-radius: 0 2px 2px 0;
+            box-sizing: border-box;
+            position: absolute;
+        }
+    input::-webkit-slider-thumb {
+        appearance: none;
+        width: 35px;
+        height: 34px;
+        background: #eee;
+        border-radius: 3px;
+        border: 1px solid rgba(0,0,0,.34);
+        box-shadow: 0 1px white inset, 0 1px rgba(0,0,0,.13);
+    }
+
+.playground {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 342px;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+.box {
+    width: 502px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.box > h1 {
+    font-size: 20px;
+    color: rgba(124, 128, 130, 0.5);
+    text-shadow: 0 1px rgba(255,255,255,.67);
+}
+
+.letter > h1 {
+    color: rgba(124, 128, 130, 0.9);
+    text-shadow: 0 1px rgba(255,255,255,.21);
+}
+
+.button,button {
+    height: 26px;
+    padding: 0 15px;
+    font-size: 12px;
+    line-height: 26px;
+    color: white;
+    text-shadow: 0 1px rgba(0,0,0,0.55);
+    background-color: hsl(315,50%,50%);
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom-color: rgba(0,0,0,0.34);
+    border-radius: 3px;
+    box-shadow: 
+        0 1px 0 rgba(255,255,255,0.34) inset,
+        0 2px 0 -1px rgba(0,0,0,0.13),
+        0 3px 0 -1px rgba(0,0,0,0.08),
+        0 3px 13px -1px rgba(0,0,0,0.21);
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+.button:hover,button:hover {
+    background: linear-gradient(top, hsl(315,60%,55%), hsl(315,40%,50%));
+}
+.button:active,button:active {
+    top: 1px;
+    background: linear-gradient(top, hsl(315,50%,30%), hsl(315,50%,50%));
+    border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
+    position: relative;
+}
+
+button.highlighted {
+    height: 40px;
+    width: 100px;
+    display: block;
+}
