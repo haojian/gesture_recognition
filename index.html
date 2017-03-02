@@ -36,13 +36,13 @@
 		<h3>Screen shots of stand alone demo</h3>
 
 		<p>"POLY-LINE" & "STRAIGHT LINE":
-		<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/polylineline.gif" alt="polyline"></p>
+		<img src="resources/polyline_line.gif" alt="polyline"></p>
 		<p>
 		<p>"ERAZE" & "POLY-LINE":
-		<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/Eraze-PolyLine.gif" alt="ERAZE"></p>
+		<img src="resources/Eraze_PolyLine.gif" alt="ERAZE"></p>
 		<p>
 		<p>"CIRCLE":
-		<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/circle.gif" alt="CIRCLE"></p>
+		<img src="resources/circle.gif" alt="CIRCLE"></p>
 		<p>
 	
 		<h3>Demo application</h3>
@@ -54,7 +54,7 @@
 		</h4>
 		<p>
 			I borrowed the idea from Optical Character Recognition, which is focus on direction analysis. This tactic could be illustrated in following image:
-			<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/mg_algo01.png" alt="CIRCLE"></p>
+			<img src="resources/mg_algo01.png" alt="CIRCLE"></p>
 		</p>
 		<ul style="list-style-type:none;">
 			<li>1. Each letter is defined by a n ‘ 8-directions gesture sequence.</li>
@@ -66,7 +66,7 @@
 		<h4>Recognition Process.</h4>
 		<h5>Removing Noise.</h5>
 		<p>
-			<img src="http://shift-3.com/blog/wp-content/uploads/2011/06/A.png" alt="a"></p>
+			<img src="resources/A.jpg" alt="a"></p>
 		<p>
 			This step is to remove the noise in recording and normalize the tracking resolution. This step also can make the recognition algorithm work more efficiently.
 		</p>
@@ -123,7 +123,7 @@ curGestureRender->render_bbox->addPoint(x, y);
 		</code></pre>
 		
 		<h5>Converting to Directions.</h5>
-		<p><img src="http://shift-3.com/blog/wp-content/uploads/2011/06/A.png" alt="CIRCLE"></p>
+		<p><img src="resources/A.jpg" alt="CIRCLE"></p>
 		<p>
 			To simplify this problem, the point list is convert to a vector list (velocity). The current design simplify the vectors into 4 dimensions: up, down, left, right. But it could be easily expand to the 8 dimensions as the one stated in the OCT tactic.</p>
 		<pre><code>
@@ -173,7 +173,7 @@ return res;
 }
 		</code></pre>
 		<h5>Simplifying.</h5>
-		<p><img src="http://shift-3.com/blog/wp-content/uploads/2011/06/C.png" alt="CIRCLE"/></p>
+		<p><img src="resources/C.jpg" alt="CIRCLE"/></p>
 		<p>
 			Simplifying is finding the consecutive movements in the same direction and joining them. This step would convert the vector list to a simple presentation (e.g., “right, up, right, up”). Then the list can easily matched to some predefined gestures. An example result of this step is as follows:
 			
@@ -240,7 +240,7 @@ return res;
 			
 		<h5>Ignore Short Segments and Matching.</h5>
 
-		<p><img src="http://shift-3.com/blog/wp-content/uploads/2011/06/D.png" alt="CIRCLE"></p>
+		<p><img src="resources/D.jpg" alt="CIRCLE"></p>
 		<p>Based on the assumption that each gesture should have some noise segments, I set a empirical parameter 90% as the elite threshold. This algorithm would remove the shortest segment repeatedly until the ration reached the empirical parameter.</p>
 
 		<pre><code>
