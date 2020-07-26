@@ -1,4 +1,5 @@
 #include "gestureRender.h"
+#include <QPoint>
 
 Render_Gesture::Render_Gesture():
     featurePoints(0),
@@ -86,12 +87,13 @@ void Render_Gesture::draw()
 
 
             int points_num = featurePoints.size();
-            QPoint polyPoint[points_num];
+            QPoint * point_arr = new QPoint[points_num];
             for(int i = 0; i< featurePoints.size(); i++)
             {
-                polyPoint[i]  = QPoint(featurePoints[i].x, featurePoints[i].y);
+                point_arr[i]  = QPoint(featurePoints[i].x, featurePoints[i].y);
             }
-            pp.drawPolyline(polyPoint, points_num);
+            pp.drawPolyline(point_arr, points_num);
+            delete [] point_arr;
         }
         else
             qDebug("Polyline Render Error");
